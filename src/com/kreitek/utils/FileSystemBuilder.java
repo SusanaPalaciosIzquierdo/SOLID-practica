@@ -1,10 +1,8 @@
 package com.kreitek.utils;
 
-import com.kreitek.files.Directory;
-import com.kreitek.files.File;
-import com.kreitek.files.FilePathname;
-import com.kreitek.files.FileSystemItemBase;
-import com.kreitek.files.error.FileOperations;
+import com.kreitek.files.data.Directory;
+import com.kreitek.files.data.File;
+import com.kreitek.files.data.FileSystemItemBase;
 
 public class FileSystemBuilder {
 
@@ -16,12 +14,12 @@ public class FileSystemBuilder {
     }
 
     public FileSystemBuilder() {
-        root = new Directory( null,"");
+        root = new Directory("");
         currentDirectory = root;
     }
 
     public FileSystemBuilder addFile(String name, int size) {
-        File file = new File(currentDirectory, name);
+        File file = new File(name);
         file.open();
         file.write(new byte[size]);
         file.close();
@@ -30,7 +28,7 @@ public class FileSystemBuilder {
     }
 
     public FileSystemBuilder addDirectory(String name) {
-        Directory directory = new Directory(null, name);
+        Directory directory = new Directory(name);
         currentDirectory.addFile(directory);
         currentDirectory = directory;
         return this;

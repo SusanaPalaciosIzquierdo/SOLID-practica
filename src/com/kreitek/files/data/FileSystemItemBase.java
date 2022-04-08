@@ -1,4 +1,4 @@
-package com.kreitek.files;
+package com.kreitek.files.data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,7 @@ public abstract class FileSystemItemBase{
     private int size;
     private final List<FileSystemItemBase> files;
 
-    protected FileSystemItemBase(Directory parent, String name) {
-        this.parent = parent;
+    protected FileSystemItemBase(String name) {
         this.name = name;
         files = new ArrayList<>();
     }
@@ -53,11 +52,9 @@ public abstract class FileSystemItemBase{
         this.size = size;
     }
 
-    /*public List<FileSystemItemBase> listFiles() {
+    public List<FileSystemItemBase> getFiles() {
         return files;
-    }*/
-
-    public abstract List<FileSystemItemBase> listFiles();
+    }
 
 
 }
