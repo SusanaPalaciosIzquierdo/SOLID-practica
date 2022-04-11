@@ -2,10 +2,16 @@ package com.kreitek.files.data;
 
 import com.kreitek.interfaces.FileChanges;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Directory extends FileSystemItemBase implements FileChanges {
+    private final List<FileSystemItemBase> files;
 
     public Directory(String name) {
         super(name);
+        files = new ArrayList<>();
     }
 
     @Override
@@ -25,9 +31,7 @@ public class Directory extends FileSystemItemBase implements FileChanges {
         }
     }
 
-    @Override
-    public void removeFile(FileSystemItemBase file) {
-        getFiles().remove(file);
+    public List<FileSystemItemBase> getFiles() {
+        return files;
     }
-
 }

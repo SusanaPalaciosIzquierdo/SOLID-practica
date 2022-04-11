@@ -22,16 +22,6 @@ public  class File extends FileSystemItemBase implements FileOperations {
     }
 
     @Override
-    public byte[] read(int numberOfBytesToRead) {
-        if (position + numberOfBytesToRead > size) {
-            numberOfBytesToRead = size - position;
-        }
-        byte[] buffer = new byte[numberOfBytesToRead];
-        position += numberOfBytesToRead;
-        return buffer;
-    }
-
-    @Override
     public void write(byte[] buffer) {
         size += buffer.length;
         position += buffer.length;

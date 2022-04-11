@@ -1,27 +1,17 @@
 package com.kreitek.files.data;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class FileSystemItemBase{
-    protected static final String PATH_SEPARATOR = "/";
-    private String name;
+    private static final String PATH_SEPARATOR = "/";
+    private final String name;
     private Directory parent;
     private String fullPath = PATH_SEPARATOR;
-    private int size;
-    private final List<FileSystemItemBase> files;
 
     protected FileSystemItemBase(String name) {
         this.name = name;
-        files = new ArrayList<>();
     }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public FileSystemItemBase getParent(){
@@ -32,7 +22,6 @@ public abstract class FileSystemItemBase{
         this.parent = parent;
     }
 
-    //TODO corregir este método
     public String getFullPath() {
         if (parent != null) {
             String parentFullPath = parent.getFullPath();
@@ -42,19 +31,6 @@ public abstract class FileSystemItemBase{
         return fullPath;
     }
 
-    public void setFullPath(String fullPath) {
-        this.fullPath = fullPath;
-    }
-
     public abstract int getSize();
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public List<FileSystemItemBase> getFiles() {
-        return files;
-    }
-
 
 }
